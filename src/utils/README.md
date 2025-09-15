@@ -27,7 +27,4 @@ Pasta destinada a funções auxiliares, classes utilitárias e scripts de apoio 
 - Garanta testes unitários para cada utilitário crítico
 - Isolar dependências de terceiros ao máximo (caminhos no requirements separáveis)
 
----
 
-Pronto para copiar e colar!  
-Se desejar templates Python para alguns dos arquivos acima, peça e envio códigos de exemplo.
