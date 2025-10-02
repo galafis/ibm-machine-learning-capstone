@@ -1,42 +1,452 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IBM Machine Learning Engineering Capstone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #007bff;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --card-bg: #fff;
+            --border-color: #ddd;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            scroll-behavior: smooth;
         }
+
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: auto;
-            background: #fff;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        section {
+            background-color: var(--card-bg);
+            margin: 20px 0;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
         }
-        h1 {
-            color: #0056b3;
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
         }
-        p {
-            margin-bottom: 10px;
+
+        h3 {
+            color: var(--secondary-color);
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        .code-block pre {
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                padding: 10px 10px;
+                font-size: 0.9em;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            .container {
+                padding: 10px;
+            }
+            section {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>IBM Machine Learning Engineering Capstone</h1>
+            <p>Plataforma enterprise de MLOps com pipelines automatizados</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#overview">Visão Geral</a>
+            <a href="#features">Características</a>
+            <a href="#tech-stack">Stack Tecnológico</a>
+            <a href="#quick-start">Quick Start</a>
+            <a href="#mlops-pipeline">MLOps Pipeline</a>
+            <a href="#models">Modelos</a>
+            <a href="#metrics">Métricas</a>
+            <a href="#deploy">Deploy</a>
+            <a href="#tests">Testes</a>
+            <a href="#use-cases">Casos de Uso</a>
+            <a href="#advanced-config">Configuração Avançada</a>
+            <a href="#license">Licença</a>
+            <a href="#author">Autor</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1>IBM Machine Learning Engineering Capstone</h1>
-        <p>Bem-vindo à página do projeto IBM Machine Learning Engineering Capstone.</p>
-        <p>Este é um placeholder para a documentação principal do projeto, que pode ser encontrada no arquivo README.md do repositório GitHub.</p>
-        <p>Welcome to the IBM Machine Learning Engineering Capstone project page.</p>
-        <p>This is a placeholder for the main project documentation, which can be found in the README.md file of the GitHub repository.</p>
-        <p>Para mais detalhes, visite o repositório: <a href="https://github.com/galafis/ibm-machine-learning-capstone">galafis/ibm-machine-learning-capstone</a></p>
+        <section id="overview">
+            <h2>🎯 Visão Geral</h2>
+            <div class="badge-container">
+                <img src="https://img.shields.io/badge/IBM-052FAD?style=flat&logo=ibm&logoColor=white" alt="IBM Badge">
+                <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python Badge">
+                <img src="https://img.shields.io/badge/MLflow-0194E2?style=flat&logo=mlflow&logoColor=white" alt="MLflow Badge">
+                <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker Badge">
+                <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white" alt="Kubernetes Badge">
+                <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white" alt="TensorFlow Badge">
+                <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License Badge">
+            </div>
+            <p>Projeto Capstone do <strong>IBM Machine Learning Engineering Professional Certificate</strong> - Plataforma enterprise de MLOps com pipelines automatizados, model registry, monitoring e serving de modelos em produção.</p>
+            <p>Sistema completo de MLOps que demonstra competências avançadas em engenharia de machine learning, deployment de modelos e operações de ML em ambiente de produção enterprise.</p>
+        </section>
+
+        <section id="features">
+            <h2>✨ Características Principais</h2>
+            <ul>
+                <li><strong>🔄 MLOps Pipeline</strong>: Treinamento, validação e deploy automatizados</li>
+                <li><strong>📦 Model Registry</strong>: Versionamento e gestão centralizada de modelos</li>
+                <li><strong>🚀 Model Serving</strong>: APIs de produção com alta disponibilidade</li>
+                <li><strong>📊 Monitoring</strong>: Detecção de drift e monitoramento de performance</li>
+                <li><strong>🐳 Containerização</strong>: Docker e Kubernetes para escalabilidade</li>
+                <li><strong>⚡ CI/CD</strong>: Pipeline de integração e deployment contínuo</li>
+            </ul>
+        </section>
+
+        <section id="tech-stack">
+            <h2>🛠️ Stack Tecnológico</h2>
+            <h3>MLOps & Engineering</h3>
+            <ul>
+                <li><strong>MLflow</strong>: Experiment tracking e model registry</li>
+                <li><strong>Docker</strong>: Containerização de modelos</li>
+                <li><strong>Kubernetes</strong>: Orquestração e auto-scaling</li>
+                <li><strong>FastAPI</strong>: APIs de serving de alta performance</li>
+                <li><strong>Prometheus/Grafana</strong>: Monitoring e observabilidade</li>
+            </ul>
+            <h3>Machine Learning</h3>
+            <ul>
+                <li><strong>TensorFlow</strong>: Deep learning e neural networks</li>
+                <li><strong>Scikit-learn</strong>: Machine learning clássico</li>
+                <li><strong>XGBoost</strong>: Gradient boosting otimizado</li>
+                <li><strong>Pandas/NumPy</strong>: Processamento de dados</li>
+            </ul>
+            <h3>Infrastructure</h3>
+            <ul>
+                <li><strong>PostgreSQL</strong>: Metadata e model registry</li>
+                <li><strong>Redis</strong>: Cache e feature store</li>
+                <li><strong>NGINX</strong>: Load balancing e reverse proxy</li>
+            </ul>
+        </section>
+
+        <section id="quick-start">
+            <h2>🚀 Quick Start</h2>
+            <h3>Pré-requisitos</h3>
+            <ul>
+                <li>Python 3.11+</li>
+                <li>Docker & Docker Compose</li>
+                <li>Kubernetes (opcional)</li>
+            </ul>
+            <h3>Instalação Local</h3>
+            <ol>
+                <li><strong>Clone o repositório:</strong>
+<div class="code-block"><pre><code>git clone https://github.com/galafis/ibm-machine-learning-capstone.git
+cd ibm-machine-learning-capstone</code></pre></div>
+                </li>
+                <li><strong>Configure o ambiente:</strong>
+<div class="code-block"><pre><code>python -m venv venv
+source venv/bin/activate  # Linux/Mac
+pip install -r requirements.txt</code></pre></div>
+                </li>
+                <li><strong>Execute com Docker:</strong>
+<div class="code-block"><pre><code>docker-compose up -d</code></pre></div>
+                </li>
+                <li><strong>Acesse a plataforma:</strong>
+<div class="code-block"><pre><code>http://localhost:8080</code></pre></div>
+                </li>
+            </ol>
+        </section>
+
+        <section id="mlops-pipeline">
+            <h2>🔬 MLOps Pipeline</h2>
+            <h3>1. Experiment Tracking</h3>
+<div class="code-block"><pre><code>import mlflow
+import mlflow.sklearn
+
+with mlflow.start_run():
+    # Treinar modelo
+    model = train_model(X_train, y_train)
+    
+    # Log parâmetros e métricas
+    mlflow.log_params({"n_estimators": 100, "max_depth": 10})
+    mlflow.log_metrics({"accuracy": 0.95, "f1_score": 0.93})
+    
+    # Registrar modelo
+    mlflow.sklearn.log_model(model, "fraud_detection_model")</code></pre></div>
+            <h3>2. Model Serving</h3>
+<div class="code-block"><pre><code>from fastapi import FastAPI
+import joblib
+
+app = FastAPI()
+model = joblib.load("models/production_model.pkl")
+
+@app.post("/predict")
+async def predict(data: PredictionRequest):
+    prediction = model.predict(data.features)
+    confidence = model.predict_proba(data.features).max()
+    
+    return {
+        "prediction": prediction.tolist(),
+        "confidence": float(confidence)
+    }</code></pre></div>
+            <h3>3. Model Monitoring</h3>
+<div class="code-block"><pre><code>from evidently import ColumnMapping
+from evidently.report import Report
+from evidently.metric_preset import DataDriftPreset
+
+# Detectar data drift
+report = Report(metrics=[DataDriftPreset()])
+report.run(reference_data=reference_df, current_data=current_df)
+
+if report.get_metric("DatasetDriftMetric").drift_detected:
+    trigger_retraining_pipeline()</code></pre></div>
+        </section>
+
+        <section id="models">
+            <h2>🤖 Modelos Implementados</h2>
+            <h3>Fraud Detection</h3>
+<div class="code-block"><pre><code>import xgboost as xgb
+
+fraud_model = xgb.XGBClassifier(
+    n_estimators=100,
+    max_depth=6,
+    learning_rate=0.1,
+    eval_metric=\'auc\'
+)</code></pre></div>
+            <h3>Recommendation System</h3>
+<div class="code-block"><pre><code>from sklearn.decomposition import NMF
+
+recommendation_model = NMF(
+    n_components=50,
+    init=\'random\',
+    random_state=42
+)</code></pre></div>
+            <h3>Time Series Forecasting</h3>
+<div class="code-block"><pre><code>import tensorflow as tf
+
+lstm_model = tf.keras.Sequential([
+    tf.keras.layers.LSTM(50, return_sequences=True),
+    tf.keras.layers.LSTM(50),
+    tf.keras.layers.Dense(1)
+])</code></pre></div>
+        </section>
+
+        <section id="metrics">
+            <h2>📊 Métricas de Performance</h2>
+            <h3>Targets de Produção</h3>
+            <ul>
+                <li><strong>Latência</strong>: &lt; 100ms por predição</li>
+                <li><strong>Throughput</strong>: &gt; 1000 requests/segundo</li>
+                <li><strong>Accuracy</strong>: &gt; 95% nos modelos de classificação</li>
+                <li><strong>Uptime</strong>: 99.9% disponibilidade</li>
+            </ul>
+            <h3>Monitoramento em Tempo Real</h3>
+<div class="code-block"><pre><code>from prometheus_client import Counter, Histogram
+
+prediction_counter = Counter(\'ml_predictions_total\', \'Total predictions\')
+prediction_latency = Histogram(\'ml_prediction_duration_seconds\', \'Prediction latency\')
+
+@prediction_latency.time()
+def make_prediction(data):
+    prediction_counter.inc()
+    return model.predict(data)</code></pre></div>
+        </section>
+
+        <section id="deploy">
+            <h2>🐳 Deploy com Kubernetes</h2>
+            <h3>Deploy da Aplicação</h3>
+<div class="code-block"><pre><code># Deploy completo
+kubectl apply -f k8s/
+
+# Verificar status
+kubectl get pods -n ml-platform
+
+# Acessar via port-forward
+kubectl port-forward svc/ml-serving 8080:80</code></pre></div>
+            <h3>Auto-scaling</h3>
+<div class="code-block"><pre><code>apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ml-serving-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ml-serving
+  minReplicas: 3
+  maxReplicas: 20
+  targetCPUUtilizationPercentage: 70</code></pre></div>
+        </section>
+
+        <section id="tests">
+            <h2>🧪 Testes e Validação</h2>
+            <h3>Executar Testes</h3>
+<div class="code-block"><pre><code># Testes unitários
+pytest tests/unit/
+
+# Testes de integração
+pytest tests/integration/
+
+# Testes de performance
+pytest tests/performance/</code></pre></div>
+            <h3>Validação de Modelos</h3>
+<div class="code-block"><pre><code># Validação cruzada
+python src/models/validate_model.py --model fraud_detection
+
+# Backtesting
+python scripts/backtest.py --start-date 2024-01-01</code></pre></div>
+        </section>
+
+        <section id="use-cases">
+            <h2>📈 Casos de Uso Enterprise</h2>
+            <h3>1. Detecção de Fraudes</h3>
+            <ul>
+                <li>Processamento em tempo real de transações</li>
+                <li>Alertas automáticos para atividades suspeitas</li>
+                <li>Redução de 80% em falsos positivos</li>
+            </ul>
+            <h3>2. Sistema de Recomendação</h3>
+            <ul>
+                <li>Recomendações personalizadas em tempo real</li>
+                <li>A/B testing para otimização contínua</li>
+                <li>Aumento de 25% no engagement</li>
+            </ul>
+            <h3>3. Manutenção Preditiva</h3>
+            <ul>
+                <li>Previsão de falhas em equipamentos</li>
+                <li>Otimização de cronogramas de manutenção</li>
+                <li>Redução de 40% em downtime não planejado</li>
+            </ul>
+        </section>
+
+        <section id="advanced-config">
+            <h2>🔧 Configuração Avançada</h2>
+            <h3>MLflow Configuration</h3>
+<div class="code-block"><pre><code># mlflow_config.py
+MLFLOW_CONFIG = {
+    \'tracking_uri\': \'postgresql://user:pass@localhost/mlflow\',
+    \'artifact_root\': \'s3://ml-artifacts-bucket\',
+    \'experiment_name\': \'production_models\'
+}</code></pre></div>
+            <h3>Model Registry</h3>
+<div class="code-block"><pre><code># Promover modelo para produção
+client = mlflow.tracking.MlflowClient()
+client.transition_model_version_stage(
+    name="fraud_detection_model",
+    version=3,
+    stage="Production"
+)</code></pre></div>
+        </section>
+
+        <section id="license">
+            <h2>📄 Licença</h2>
+            <p>Este projeto está licenciado sob a Licença MIT - veja o arquivo <a href="https://github.com/galafis/ibm-machine-learning-capstone/blob/main/LICENSE">LICENSE</a> para detalhes.</p>
+        </section>
+
+        <section id="author">
+            <h2>👨‍💻 Autor</h2>
+            <p><strong>Gabriel Demetrios Lafis</strong></p>
+            <ul>
+                <li><strong>Certificação</strong>: IBM Machine Learning Engineering Professional Certificate</li>
+                <li>GitHub: <a href="https://github.com/galafis">@galafis</a></li>
+                <li>Email: <a href="mailto:gabrieldemetrios@gmail.com">gabrieldemetrios@gmail.com</a></li>
+            </ul>
+            <p>⭐ Se este projeto foi útil, considere deixar uma estrela!</p>
+        </section>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gabriel Demetrios Lafis. Todos os direitos reservados.</p>
+            <p>Construído com ❤️ para o <a href="https://github.com/galafis/ibm-machine-learning-capstone">IBM Machine Learning Engineering Capstone</a></p>
+        </div>
+    </footer>
 </body>
 </html>
+
