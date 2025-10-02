@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBM Machine Learning Engineering Capstone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>IBM Machine Learning Engineering Capstone</h1>
+            <p>Plataforma enterprise de MLOps com pipelines automatizados</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#overview">Visão Geral</a></li>
+                <li><a href="#features">Características</a></li>
+                <li><a href="#tech-stack">Stack Tecnológico</a></li>
+                <li><a href="#quick-start">Quick Start</a></li>
+                <li><a href="https://github.com/galafis/ibm-machine-learning-capstone" target="_blank">Repositório GitHub <i class="fas fa-external-link-alt"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="overview" class="container">
+            <h2>🎯 Visão Geral</h2>
+            <p>Este projeto capstone do <strong>IBM Machine Learning Engineering Professional Certificate</strong> apresenta uma plataforma completa de MLOps. Ele demonstra competências avançadas em engenharia de machine learning, deployment de modelos e operações de ML em ambiente de produção enterprise.</p>
+            <p>O objetivo é fornecer uma solução robusta e escalável para o ciclo de vida completo de modelos de Machine Learning, desde o treinamento e validação até o deployment, monitoramento e serving em produção.</p>
+        </section>
+
+        <section id="features" class="container">
+            <h2>✨ Características Principais</h2>
+            <ul>
+                <li><strong>🔄 MLOps Pipeline</strong>: Treinamento, validação e deploy automatizados.</li>
+                <li><strong>📦 Model Registry</strong>: Versionamento e gestão centralizada de modelos.</li>
+                <li><strong>🚀 Model Serving</strong>: APIs de produção com alta disponibilidade usando FastAPI.</li>
+                <li><strong>📊 Monitoring</strong>: Detecção de drift de dados e monitoramento de performance com Prometheus/Grafana.</li>
+                <li><strong>🐳 Containerização</strong>: Docker e Kubernetes para escalabilidade e orquestração.</li>
+                <li><strong>⚡ CI/CD</strong>: Pipeline de integração e deployment contínuo para agilidade.</li>
+            </ul>
+        </section>
+
+        <section id="tech-stack" class="container">
+            <h2>🛠️ Stack Tecnológico</h2>
+            <h3>MLOps & Engineering</h3>
+            <ul>
+                <li><strong>MLflow</strong>: Experiment tracking e model registry.</li>
+                <li><strong>Docker</strong>: Containerização de modelos.</li>
+                <li><strong>Kubernetes</strong>: Orquestração e auto-scaling.</li>
+                <li><strong>FastAPI</strong>: APIs de serving de alta performance.</li>
+                <li><strong>Prometheus/Grafana</strong>: Monitoring e observabilidade.</li>
+            </ul>
+            <h3>Machine Learning</h3>
+            <ul>
+                <li><strong>TensorFlow</strong>: Deep learning e neural networks.</li>
+                <li><strong>Scikit-learn</strong>: Machine learning clássico.</li>
+                <li><strong>XGBoost</strong>: Gradient boosting otimizado.</li>
+                <li><strong>Pandas/NumPy</strong>: Processamento de dados.</li>
+            </ul>
+            <h3>Infrastructure</h3>
+            <ul>
+                <li><strong>PostgreSQL</strong>: Metadata e model registry.</li>
+                <li><strong>Redis</strong>: Cache e feature store.</li>
+                <li><strong>NGINX</strong>: Load balancing e reverse proxy.</li>
+            </ul>
+        </section>
+
+        <section id="quick-start" class="container">
+            <h2>🚀 Quick Start</h2>
+            <p>Para iniciar o projeto localmente, siga os passos abaixo:</p>
+            <h3>Pré-requisitos</h3>
+            <ul>
+                <li>Python 3.11+</li>
+                <li>Docker & Docker Compose</li>
+                <li>Kubernetes (opcional)</li>
+            </ul>
+            <h3>Instalação Local</h3>
+            <p>1. Clone o repositório:</p>
+            <pre><code>git clone https://github.com/galafis/ibm-machine-learning-capstone.git
+cd ibm-machine-learning-capstone</code></pre>
+            <p>2. Configure o ambiente:</p>
+            <pre><code>python -m venv venv
+source venv/bin/activate  # Linux/Mac
+pip install -r requirements.txt</code></pre>
+            <p>3. Execute com Docker:</p>
+            <pre><code>docker-compose up -d</code></pre>
+            <p>4. Acesse a plataforma:</p>
+            <pre><code>http://localhost:8080</code></pre>
+            <p>Para mais detalhes sobre o MLOps Pipeline, Model Serving, Monitoring e Deploy com Kubernetes, consulte o <a href="https://github.com/galafis/ibm-machine-learning-capstone/blob/main/README.md" target="_blank">README.md completo no GitHub</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gabriel Demetrios Lafis. Todos os direitos reservados.</p>
+            <p>Este projeto é licenciado sob a <a href="https://github.com/galafis/ibm-machine-learning-capstone/blob/main/LICENSE" target="_blank">Licença MIT</a>.</p>
+            <div class="social-links">
+                <a href="https://github.com/galafis" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/gabrieldemetrios/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:gabrieldemetrios@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
