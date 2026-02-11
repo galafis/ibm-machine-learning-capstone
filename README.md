@@ -1,12 +1,5 @@
 # IBM Machine Learning Engineering Capstone
 
-![IBM](https://img.shields.io/badge/IBM-052FAD?style=flat&logo=ibm&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=flat&logo=mlflow&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Projeto Capstone do **IBM Machine Learning Engineering Professional Certificate** - Plataforma enterprise de MLOps com pipelines automatizados, model registry, monitoring e serving de modelos em produção.
 
