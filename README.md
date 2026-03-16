@@ -1,412 +1,280 @@
-# 🤖 Ibm Machine Learning Capstone
+<div align="center">
 
-> Machine Learning Engineering Professional Certificate Capstone Project - Enterprise MLOps platform with automated pipelines
+# IBM Machine Learning Capstone
 
-[![Python](https://img.shields.io/badge/Python-3.12-3776AB.svg)](https://img.shields.io/badge/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://img.shields.io/badge/)
-[![Flask](https://img.shields.io/badge/Flask-3.0-000000.svg)](https://img.shields.io/badge/)
-[![MLflow](https://img.shields.io/badge/MLflow-2.10-0194E2.svg)](https://img.shields.io/badge/)
-[![NumPy](https://img.shields.io/badge/NumPy-1.26-013243.svg)](https://img.shields.io/badge/)
-[![Pandas](https://img.shields.io/badge/Pandas-2.2-150458.svg)](https://img.shields.io/badge/)
-[![Plotly](https://img.shields.io/badge/Plotly-5.18-3F4F75.svg)](https://img.shields.io/badge/)
-[![scikit--learn](https://img.shields.io/badge/scikit--learn-1.4-F7931E.svg)](https://img.shields.io/badge/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?logo=docker)](Dockerfile)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![MLflow](https://img.shields.io/badge/MLflow-2.10-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)](https://mlflow.org/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](Dockerfile)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-[English](#english) | [Português](#português)
+Projeto capstone do IBM Machine Learning Professional Certificate -- plataforma MLOps com pipelines de treinamento, registro de modelos, API de predicao e serving via Flask.
+
+Capstone project from the IBM Machine Learning Professional Certificate -- MLOps platform with training pipelines, model registry, prediction API, and serving via Flask.
+
+[Portugues](#portugues) | [English](#english)
+
+</div>
 
 ---
 
+<a name="portugues"></a>
+## Portugues
+
+### Sobre
+
+Este projeto foi desenvolvido como capstone da certificacao profissional IBM Machine Learning. A plataforma implementa um ciclo completo de MLOps: geracao de datasets sinteticos (churn de clientes e precos de imoveis), treinamento e comparacao automatica de modelos (Random Forest, Gradient Boosting, Logistic Regression, Linear Regression), versionamento em banco SQLite com registro de metricas, e serving de predicoes via API REST Flask. O sistema seleciona automaticamente o melhor modelo com base em acuracia (classificacao) ou RMSE (regressao) e o disponibiliza para inferencia em tempo real. O projeto exercita conceitos de engenharia de ML como pipelines automatizados, model registry e monitoramento de predicoes.
+
+### Tecnologias
+
+| Tecnologia | Descricao |
+|---|---|
+| Python 3.12 | Linguagem principal |
+| scikit-learn | Treinamento e avaliacao de modelos (RF, GBR, LR) |
+| Flask | API REST para treinamento e predicao |
+| MLflow | Gerenciamento do ciclo de vida de modelos |
+| Pandas / NumPy | Manipulacao de dados e computacao numerica |
+| Plotly | Visualizacoes interativas |
+| SQLite | Registro de modelos, experimentos e predicoes |
+| Docker | Containerizacao para deploy |
+
+### Arquitetura
+
+```mermaid
+graph TD
+    A[Cliente REST] --> B[Flask API]
+    B --> C["/api/train"]
+    B --> D["/api/predict"]
+    B --> E["/api/models"]
+    C --> F[MLPipeline]
+    F --> G[Geracao de Dados Sinteticos]
+    G --> H[Treinamento: RF / GBR / LR]
+    H --> I[Selecao do Melhor Modelo]
+    I --> J[MLModelRegistry - SQLite]
+    D --> K[ModelServingAPI]
+    K --> J
+    J --> L[Predicao em Tempo Real]
+
+    style B fill:#e1f5fe
+    style F fill:#e8f5e9
+    style J fill:#fff3e0
+    style K fill:#f3e5f5
+```
+
+### Estrutura do Projeto
+
+```
+ibm-machine-learning-capstone/
+├── config/
+│   └── mlflow_config.py
+├── src/
+│   ├── ml_platform.py              # Pipeline ML, registro e serving
+│   ├── main_platform.py            # Dashboard Streamlit
+│   ├── serving/
+│   │   └── app.py                  # API Flask de serving
+│   ├── data/
+│   ├── models/
+│   ├── monitoring/
+│   ├── scripts/
+│   └── utils/
+├── tests/
+│   ├── __init__.py
+│   ├── performance_test.py
+│   ├── test_platform.py
+│   ├── unit/
+│   └── performance/
+├── k8s/
+│   └── service-api.yaml
+├── Dockerfile
+├── CONTRIBUTING.md
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+### Inicio Rapido
+
+```bash
+# Clonar o repositorio
+git clone https://github.com/galafis/ibm-machine-learning-capstone.git
+cd ibm-machine-learning-capstone
+
+# Criar ambiente virtual
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Executar pipeline de treinamento + API
+python src/ml_platform.py
+
+# Ou executar apenas o servidor de serving
+python src/serving/app.py
+```
+
+### Docker
+
+```bash
+docker build -t ibm-ml-capstone .
+docker run -p 8000:8000 ibm-ml-capstone
+```
+
+### Testes
+
+```bash
+pytest
+pytest --cov --cov-report=html
+pytest tests/test_platform.py -v
+```
+
+### Aprendizados
+
+- Implementacao de pipelines completos de MLOps (treinamento, avaliacao, registro, serving)
+- Comparacao automatica de algoritmos e selecao do melhor modelo
+- Versionamento de modelos com model registry em SQLite
+- Deploy de modelos como APIs REST com Flask
+- Geracao de datasets sinteticos para simulacao de cenarios reais (churn, precos)
+- Monitoramento de predicoes com logging estruturado
+
+### Autor
+
+**Gabriel Demetrios Lafis**
+- GitHub: [@galafis](https://github.com/galafis)
+- LinkedIn: [Gabriel Demetrios Lafis](https://linkedin.com/in/gabriel-demetrios-lafis)
+
+### Licenca
+
+Este projeto esta licenciado sob a [Licenca MIT](LICENSE).
+
+---
+
+<a name="english"></a>
 ## English
 
-### 🎯 Overview
+### About
 
-**Ibm Machine Learning Capstone** is a production-grade Python application complemented by HTML that showcases modern software engineering practices including clean architecture, comprehensive testing, containerized deployment, and CI/CD readiness.
+This project was developed as a capstone for the IBM Machine Learning Professional Certificate. The platform implements a complete MLOps cycle: synthetic dataset generation (customer churn and house prices), automated model training and comparison (Random Forest, Gradient Boosting, Logistic Regression, Linear Regression), versioning in an SQLite database with metric registration, and prediction serving via Flask REST API. The system automatically selects the best model based on accuracy (classification) or RMSE (regression) and makes it available for real-time inference. The project exercises ML engineering concepts such as automated pipelines, model registry, and prediction monitoring.
 
-The codebase comprises **1,323 lines** of source code organized across **8 modules**, following industry best practices for maintainability, scalability, and code quality.
+### Technologies
 
-### ✨ Key Features
+| Technology | Description |
+|---|---|
+| Python 3.12 | Core language |
+| scikit-learn | Model training and evaluation (RF, GBR, LR) |
+| Flask | REST API for training and prediction |
+| MLflow | Model lifecycle management |
+| Pandas / NumPy | Data manipulation and numerical computing |
+| Plotly | Interactive visualizations |
+| SQLite | Model, experiment, and prediction registry |
+| Docker | Containerization for deployment |
 
-- **🤖 ML Pipeline**: End-to-end machine learning workflow from data to deployment
-- **🔬 Feature Engineering**: Automated feature extraction and transformation
-- **📊 Model Evaluation**: Comprehensive metrics and cross-validation
-- **🚀 Model Serving**: Production-ready prediction API
-- **🐳 Containerized**: Docker support for consistent deployment
-- **📡 REST API**: 2 endpoints with full CRUD operations
-- **🏗️ Object-Oriented**: 5 core classes with clean architecture
-
-### 🏗️ Architecture
-
-```mermaid
-graph TB
-    subgraph Client["🖥️ Client Layer"]
-        A[REST API Client]
-        B[Swagger UI]
-    end
-    
-    subgraph API["⚡ API Layer"]
-        C[Authentication & Rate Limiting]
-        D[Request Validation]
-        E[API Endpoints]
-    end
-    
-    subgraph ML["🤖 ML Engine"]
-        F[Feature Engineering]
-        G[Model Training]
-        H[Prediction Service]
-        I[Model Registry]
-    end
-    
-    subgraph Data["💾 Data Layer"]
-        J[(Database)]
-        K[Cache Layer]
-        L[Data Pipeline]
-    end
-    
-    A --> C
-    B --> C
-    C --> D --> E
-    E --> H
-    E --> J
-    H --> F --> G
-    G --> I
-    I --> H
-    E --> K
-    L --> J
-    
-    style Client fill:#e1f5fe
-    style API fill:#f3e5f5
-    style ML fill:#e8f5e9
-    style Data fill:#fff3e0
-```
+### Architecture
 
 ```mermaid
-classDiagram
-    class PredictionResponse
-    class MLModelRegistry
-    class MLPipeline
-    class PredictionRequest
+graph TD
+    A[REST Client] --> B[Flask API]
+    B --> C["/api/train"]
+    B --> D["/api/predict"]
+    B --> E["/api/models"]
+    C --> F[MLPipeline]
+    F --> G[Synthetic Data Generation]
+    G --> H[Training: RF / GBR / LR]
+    H --> I[Best Model Selection]
+    I --> J[MLModelRegistry - SQLite]
+    D --> K[ModelServingAPI]
+    K --> J
+    J --> L[Real-Time Prediction]
+
+    style B fill:#e1f5fe
+    style F fill:#e8f5e9
+    style J fill:#fff3e0
+    style K fill:#f3e5f5
 ```
 
-### 📡 API Endpoints
+### Project Structure
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/health` | Retrieve Health |
-| `POST` | `/predict` | Create Predict |
+```
+ibm-machine-learning-capstone/
+├── config/
+│   └── mlflow_config.py
+├── src/
+│   ├── ml_platform.py              # ML pipeline, registry, and serving
+│   ├── main_platform.py            # Streamlit dashboard
+│   ├── serving/
+│   │   └── app.py                  # Flask serving API
+│   ├── data/
+│   ├── models/
+│   ├── monitoring/
+│   ├── scripts/
+│   └── utils/
+├── tests/
+│   ├── __init__.py
+│   ├── performance_test.py
+│   ├── test_platform.py
+│   ├── unit/
+│   └── performance/
+├── k8s/
+│   └── service-api.yaml
+├── Dockerfile
+├── CONTRIBUTING.md
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
 
-### 🚀 Quick Start
-
-#### Prerequisites
-
-- Python 3.12+
-- pip (Python package manager)
-
-#### Installation
+### Quick Start
 
 ```bash
 # Clone the repository
 git clone https://github.com/galafis/ibm-machine-learning-capstone.git
 cd ibm-machine-learning-capstone
 
-# Create and activate virtual environment
+# Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
-```
 
-#### Running
+# Run training pipeline + API
+python src/ml_platform.py
 
-```bash
-# Run the application
+# Or run serving server only
 python src/serving/app.py
 ```
 
-### 🧪 Testing
+### Docker
 
 ```bash
-# Run all tests
+docker build -t ibm-ml-capstone .
+docker run -p 8000:8000 ibm-ml-capstone
+```
+
+### Tests
+
+```bash
 pytest
-
-# Run with coverage report
 pytest --cov --cov-report=html
-
-# Run specific test module
-pytest tests/test_main.py -v
-
-# Run with detailed output
-pytest -v --tb=short
+pytest tests/test_platform.py -v
 ```
 
-### 📁 Project Structure
+### Learnings
 
-```
-ibm-machine-learning-capstone/
-├── config/        # Configuration
-│   └── mlflow_config.py
-├── docker/
-│   └── README.md
-├── docs/          # Documentation
-├── k8s/
-│   ├── README.md
-│   └── service-api.yaml
-├── notebooks/
-│   └── README.md
-├── src/          # Source code
-│   ├── data/
-│   │   └── README.md
-│   ├── models/        # Data models
-│   │   └── README.md
-│   ├── monitoring/
-│   │   └── README.md
-│   ├── scripts/
-│   │   └── README.md
-│   ├── serving/
-│   │   ├── README.md
-│   │   └── app.py
-│   ├── utils/         # Utilities
-│   │   └── README.md
-│   ├── main_platform.py
-│   └── ml_platform.py
-├── tests/         # Test suite
-│   ├── performance/
-│   │   └── README.md
-│   ├── unit/
-│   │   ├── integration/
-│   │   └── README.md
-│   ├── __init__.py
-│   ├── performance_test.py
-│   └── test_platform.py
-├── CONTRIBUTING.md
-├── Dockerfile
-├── LICENSE
-├── README.md
-└── requirements.txt
-```
+- Implementing complete MLOps pipelines (training, evaluation, registration, serving)
+- Automated algorithm comparison and best model selection
+- Model versioning with model registry in SQLite
+- Deploying models as REST APIs with Flask
+- Generating synthetic datasets for real scenario simulation (churn, prices)
+- Prediction monitoring with structured logging
 
-### 🛠️ Tech Stack
-
-| Technology | Description | Role |
-|------------|-------------|------|
-| **Python** | Core Language | Primary |
-| **Docker** | Containerization platform | Framework |
-| **Flask** | Lightweight web framework | Framework |
-| **MLflow** | ML lifecycle management | Framework |
-| **NumPy** | Numerical computing | Framework |
-| **Pandas** | Data manipulation library | Framework |
-| **Plotly** | Interactive visualization | Framework |
-| **scikit-learn** | Machine learning library | Framework |
-| HTML | 1 files | Supporting |
-
-### 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### 👤 Author
+### Author
 
 **Gabriel Demetrios Lafis**
 - GitHub: [@galafis](https://github.com/galafis)
 - LinkedIn: [Gabriel Demetrios Lafis](https://linkedin.com/in/gabriel-demetrios-lafis)
 
----
+### License
 
-## Português
-
-### 🎯 Visão Geral
-
-**Ibm Machine Learning Capstone** é uma aplicação Python de nível profissional, complementada por HTML que demonstra práticas modernas de engenharia de software, incluindo arquitetura limpa, testes abrangentes, implantação containerizada e prontidão para CI/CD.
-
-A base de código compreende **1,323 linhas** de código-fonte organizadas em **8 módulos**, seguindo as melhores práticas do setor para manutenibilidade, escalabilidade e qualidade de código.
-
-### ✨ Funcionalidades Principais
-
-- **🤖 ML Pipeline**: End-to-end machine learning workflow from data to deployment
-- **🔬 Feature Engineering**: Automated feature extraction and transformation
-- **📊 Model Evaluation**: Comprehensive metrics and cross-validation
-- **🚀 Model Serving**: Production-ready prediction API
-- **🐳 Containerized**: Docker support for consistent deployment
-- **📡 REST API**: 2 endpoints with full CRUD operations
-- **🏗️ Object-Oriented**: 5 core classes with clean architecture
-
-### 🏗️ Arquitetura
-
-```mermaid
-graph TB
-    subgraph Client["🖥️ Client Layer"]
-        A[REST API Client]
-        B[Swagger UI]
-    end
-    
-    subgraph API["⚡ API Layer"]
-        C[Authentication & Rate Limiting]
-        D[Request Validation]
-        E[API Endpoints]
-    end
-    
-    subgraph ML["🤖 ML Engine"]
-        F[Feature Engineering]
-        G[Model Training]
-        H[Prediction Service]
-        I[Model Registry]
-    end
-    
-    subgraph Data["💾 Data Layer"]
-        J[(Database)]
-        K[Cache Layer]
-        L[Data Pipeline]
-    end
-    
-    A --> C
-    B --> C
-    C --> D --> E
-    E --> H
-    E --> J
-    H --> F --> G
-    G --> I
-    I --> H
-    E --> K
-    L --> J
-    
-    style Client fill:#e1f5fe
-    style API fill:#f3e5f5
-    style ML fill:#e8f5e9
-    style Data fill:#fff3e0
-```
-
-### 📡 API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/health` | Retrieve Health |
-| `POST` | `/predict` | Create Predict |
-
-### 🚀 Início Rápido
-
-#### Prerequisites
-
-- Python 3.12+
-- pip (Python package manager)
-
-#### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/galafis/ibm-machine-learning-capstone.git
-cd ibm-machine-learning-capstone
-
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-#### Running
-
-```bash
-# Run the application
-python src/serving/app.py
-```
-
-### 🧪 Testing
-
-```bash
-# Run all tests
-pytest
-
-# Run with coverage report
-pytest --cov --cov-report=html
-
-# Run specific test module
-pytest tests/test_main.py -v
-
-# Run with detailed output
-pytest -v --tb=short
-```
-
-### 📁 Estrutura do Projeto
-
-```
-ibm-machine-learning-capstone/
-├── config/        # Configuration
-│   └── mlflow_config.py
-├── docker/
-│   └── README.md
-├── docs/          # Documentation
-├── k8s/
-│   ├── README.md
-│   └── service-api.yaml
-├── notebooks/
-│   └── README.md
-├── src/          # Source code
-│   ├── data/
-│   │   └── README.md
-│   ├── models/        # Data models
-│   │   └── README.md
-│   ├── monitoring/
-│   │   └── README.md
-│   ├── scripts/
-│   │   └── README.md
-│   ├── serving/
-│   │   ├── README.md
-│   │   └── app.py
-│   ├── utils/         # Utilities
-│   │   └── README.md
-│   ├── main_platform.py
-│   └── ml_platform.py
-├── tests/         # Test suite
-│   ├── performance/
-│   │   └── README.md
-│   ├── unit/
-│   │   ├── integration/
-│   │   └── README.md
-│   ├── __init__.py
-│   ├── performance_test.py
-│   └── test_platform.py
-├── CONTRIBUTING.md
-├── Dockerfile
-├── LICENSE
-├── README.md
-└── requirements.txt
-```
-
-### 🛠️ Stack Tecnológica
-
-| Tecnologia | Descrição | Papel |
-|------------|-----------|-------|
-| **Python** | Core Language | Primary |
-| **Docker** | Containerization platform | Framework |
-| **Flask** | Lightweight web framework | Framework |
-| **MLflow** | ML lifecycle management | Framework |
-| **NumPy** | Numerical computing | Framework |
-| **Pandas** | Data manipulation library | Framework |
-| **Plotly** | Interactive visualization | Framework |
-| **scikit-learn** | Machine learning library | Framework |
-| HTML | 1 files | Supporting |
-
-### 🤝 Contribuindo
-
-Contribuições são bem-vindas! Sinta-se à vontade para enviar um Pull Request.
-
-### 📄 Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-### 👤 Autor
-
-**Gabriel Demetrios Lafis**
-- GitHub: [@galafis](https://github.com/galafis)
-- LinkedIn: [Gabriel Demetrios Lafis](https://linkedin.com/in/gabriel-demetrios-lafis)
+This project is licensed under the [MIT License](LICENSE).
